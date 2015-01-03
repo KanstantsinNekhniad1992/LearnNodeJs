@@ -3,3 +3,9 @@ dist
 .tmp
 bower_components
 .idea
+node.exe
+node_etw_provider.man
+node_perfctr_provider.man
+nodevars.bat
+npm
+npm.cmd

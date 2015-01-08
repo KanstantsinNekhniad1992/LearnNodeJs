@@ -1,16 +1,10 @@
 var http = require('http');
-var url = require('url');
+var log = require('./log')(module);
 
-var server = new http.Server(function(req, res) {
+var server = http.createServer();
 
-    var urlParsed = url.parse(req.url, true);
-    if( urlParsed.pathname == '/echo' && urlParsed.query.message) {
-        res.setHeader('Cache-control','no-cache');
-        res.end(urlParsed.query.message);
-    } else {
-        res.statusCode = 404;
-        res.end('page not found');
-    }
-});
+server.on('request', require('./request'));
 
-server.listen(1337, '127.0.0.1');
+server.listen(1337);
+
+console.log('server is running');

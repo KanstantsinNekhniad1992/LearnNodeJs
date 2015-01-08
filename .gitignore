@@ -10,3 +10,4 @@ nodevars.bat
 npm
 npm.cmd
 .idea
+node_modules

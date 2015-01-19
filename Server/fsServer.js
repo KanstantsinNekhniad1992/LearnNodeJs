@@ -1,11 +1,14 @@
 var http = require('http');
 var fs = require('fs');
 
-http.createServer(function(req, res) {
-    var info;
-    console.log(req.url);
-    if(req.url == '/') {
-        info = fs.readFileSync('index.html');
-        res.end(info);
+fs.readFile('debug.log',{encoding:'utf-8'}, function(err, data) {
+    if(err) {
+        if(err.code == 'ENOENT') {
+            console.log(err.message());
+        } else {
+            console.log(err);
+        }
+    } else {
+        console.log(data);
     }
-}).listen(3000, '127.0.0.1');
+});
